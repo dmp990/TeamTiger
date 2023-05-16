@@ -16,18 +16,15 @@ public class EmployeeDAO {
         }
     }
 
-    public void getAllUsers() {
+    public ResultSet getAllUsers() {
+        ResultSet resultSet = null;
         try {
-            ResultSet resultSet = statement.executeQuery(SQLQueries.SELECT_ALL);
-            while (resultSet.next()) {
-                System.out.print(
-                        resultSet.getInt(1) + " " +
-                                resultSet.getString(2) + " " +
-                                resultSet.getString(3) + "\n");
-            }
+            resultSet = statement.executeQuery(SQLQueries.SELECT_ALL);
+            return resultSet;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return resultSet;
     }
 
     public void createEmployee(int empNo, Date birthDate, String firstName, String lastName, String gender, Date hireDate) {
