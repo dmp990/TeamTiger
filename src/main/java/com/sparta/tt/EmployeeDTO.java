@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class EmployeeDTO {
-    private ArrayList<Employee> employeesArray;
+    private ArrayList<Employee> employeesArray = new ArrayList<>();
 
     public ArrayList<Employee> getEmployeesArray() throws SQLException {
         EmployeeDAO employeeDAO = new EmployeeDAO(ConnectionManager.createConnection());
@@ -24,9 +24,3 @@ public class EmployeeDTO {
         return employeesArray;
     }
 }
-
-/*
-resultSet.getInt(1) + " " +
-                                resultSet.getString(2) + " " +
-                                resultSet.getString(3) + "\n");
- */
