@@ -23,7 +23,7 @@ public class EmployeeDTOMapper {
             String gender = resultSet.getString(5);
             LocalDate hireDate = resultSet.getDate(6).toLocalDate();
 
-            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate, firstName, lastName, gender, hireDate, null, null, null));
+            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate.toString(), firstName, lastName, gender, hireDate.toString(), null, null, null));
         }
         return employeesArray;
     }
@@ -42,7 +42,7 @@ public class EmployeeDTOMapper {
             LocalDate startDate = resultSet.getDate(8).toLocalDate();
             LocalDate endDate = resultSet.getDate(9).toLocalDate();
 
-            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate, firstName, lastName, gender, hireDate, department, startDate, endDate));
+            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate.toString(), firstName, lastName, gender, hireDate.toString(), department, startDate.toString(), endDate.toString()));
         }
         return employeesArray;
     }

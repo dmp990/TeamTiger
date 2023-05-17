@@ -1,20 +1,18 @@
 package com.sparta.tt.controllers;
 
-import java.time.LocalDate;
 
 public class EmployeeDTO {
     private int employeeNumber;
-    private LocalDate birthDate;
+    private String birthDate;
     private String firstName;
     private String lastName;
     private String gender;
-    private LocalDate hireDate;
-
+    private String hireDate;
     private String departmentName;
-    private LocalDate fromDate;
-    private LocalDate toDate;
+    private String fromDate;
+    private String toDate;
 
-    public EmployeeDTO(int employeeNumber, LocalDate birthDate, String firstName, String lastName, String gender, LocalDate hireDate, String departmentName, LocalDate fromDate, LocalDate toDate) {
+    public EmployeeDTO(int employeeNumber, String birthDate, String firstName, String lastName, String gender, String hireDate, String departmentName, String fromDate, String toDate) {
         this.employeeNumber = employeeNumber;
         this.birthDate = birthDate;
         this.firstName = firstName;
@@ -34,11 +32,11 @@ public class EmployeeDTO {
         this.employeeNumber = employeeNumber;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -67,10 +65,10 @@ public class EmployeeDTO {
     }
 
     public String getHireDate() {
-        return hireDate.toString();
+        return hireDate;
     }
 
-    public void setHireDate(LocalDate hireDate) {
+    public void setHireDate(String hireDate) {
         this.hireDate = hireDate;
     }
 
@@ -82,19 +80,19 @@ public class EmployeeDTO {
         this.departmentName = departmentName;
     }
 
-    public LocalDate getFromDate() {
+    public String getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(LocalDate fromDate) {
+    public void setFromDate(String fromDate) {
         this.fromDate = fromDate;
     }
 
-    public LocalDate getToDate() {
+    public String getToDate() {
         return toDate;
     }
 
-    public void setToDate(LocalDate toDate) {
+    public void setToDate(String toDate) {
         this.toDate = toDate;
     }
 
@@ -102,14 +100,14 @@ public class EmployeeDTO {
     public String toString() {
         return "EmployeeDTO{" +
                 "employeeNumber=" + employeeNumber +
-                ", birthDate=" + birthDate +
+                ", birthDate='" + birthDate + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
-                ", hireDate=" + hireDate +
+                ", hireDate='" + hireDate + '\'' +
                 ", departmentName='" + departmentName + '\'' +
-                ", fromDate=" + fromDate +
-                ", toDate=" + toDate +
+                ", fromDate='" + fromDate + '\'' +
+                ", toDate='" + toDate + '\'' +
                 '}';
     }
 }
