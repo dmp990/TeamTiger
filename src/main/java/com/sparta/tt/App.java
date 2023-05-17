@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws SQLException {
-        EmployeeDTO employeeDTO = new EmployeeDTO();
-        ArrayList<Employee> employees =  employeeDTO.getEmployeesArray();
+        EmployeeDTOMapper employeeDTO = new EmployeeDTOMapper();
+        ArrayList<EmployeeDTO> employees =  employeeDTO.getEmployeesArray();
 
-        for (Employee each: employees) {
+        for (EmployeeDTO each: employees) {
             System.out.println(each);
         }
         ConnectionManager.closeConnection();

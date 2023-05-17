@@ -1,26 +1,81 @@
 package com.sparta.tt;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class EmployeeDTO {
-    private ArrayList<Employee> employeesArray = new ArrayList<>();
+    private int employeeNumber;
+    private LocalDate birthDate;
+    private String firstName;
+    private String lastName;
+    private String gender;
+    private LocalDate hireDate;
 
-    public ArrayList<Employee> getEmployeesArray() throws SQLException {
-        EmployeeDAO employeeDAO = new EmployeeDAO(ConnectionManager.createConnection());
-        ResultSet resultSet = employeeDAO.getAllUsers();
-        while (resultSet.next()) {
-            int employeeNumber = resultSet.getInt(1);
-            LocalDate birthDate = resultSet.getDate(2).toLocalDate();
-            String firstName = resultSet.getString(3);
-            String lastName = resultSet.getString(4);
-            String gender = resultSet.getString(5);
-            LocalDate hireDate = resultSet.getDate(6).toLocalDate();
+    public EmployeeDTO(int employeeNumber, LocalDate birthDate, String firstName, String lastName, String gender, LocalDate hireDate) {
+        this.employeeNumber = employeeNumber;
+        this.birthDate = birthDate;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.hireDate = hireDate;
+    }
 
-            employeesArray.add(new Employee(employeeNumber, birthDate, firstName, lastName, gender, hireDate));
-        }
-        return employeesArray;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public int getEmployeeNumber() {
+        return employeeNumber;
+    }
+
+    public void setEmployeeNumber(int employeeNumber) {
+        this.employeeNumber = employeeNumber;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(LocalDate hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeNumber=" + employeeNumber +
+                ", birthDate=" + birthDate +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", hireDate=" + hireDate +
+                '}';
     }
 }
