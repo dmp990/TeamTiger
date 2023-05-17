@@ -1,7 +1,6 @@
-package com.sparta.tt;
+package com.sparta.tt.models;
 
 import java.sql.*;
-import java.time.LocalDate;
 
 public class EmployeeDAO {
 

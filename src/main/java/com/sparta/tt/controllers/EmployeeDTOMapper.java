@@ -1,4 +1,8 @@
-package com.sparta.tt;
+package com.sparta.tt.controllers;
+
+import com.sparta.tt.ConnectionManager;
+import com.sparta.tt.controllers.EmployeeDTO;
+import com.sparta.tt.models.EmployeeDAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,17 +1,27 @@
 package com.sparta.tt.phase_two;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Spartan {
     private String name;
     private String course;
-    private ArrayList<Boolean> flags;
 
+    private String date;
 
-    public Spartan(String name, String course, ArrayList<Boolean> flags) {
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Spartan(String name, String course, String date) {
         this.name = name;
         this.course = course;
-        this.flags = flags;
+
+        this.date = date;
     }
 
     public String getName() {
@@ -30,11 +40,5 @@ public class Spartan {
         this.course = course;
     }
 
-    public ArrayList<Boolean> getFlags() {
-        return flags;
-    }
 
-    public void setFlags(ArrayList<Boolean> flags) {
-        this.flags = flags;
-    }
 }

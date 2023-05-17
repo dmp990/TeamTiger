@@ -1,4 +1,4 @@
-package com.sparta.tt;
+package com.sparta.tt.models;
 
 public interface SQLQueries {
 

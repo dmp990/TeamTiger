@@ -1,4 +1,4 @@
-package com.sparta.tt;
+package com.sparta.tt.controllers;
 
 import java.time.LocalDate;
 
@@ -66,8 +66,8 @@ public class EmployeeDTO {
         this.gender = gender;
     }
 
-    public LocalDate getHireDate() {
-        return hireDate;
+    public String getHireDate() {
+        return hireDate.toString();
     }
 
     public void setHireDate(LocalDate hireDate) {
