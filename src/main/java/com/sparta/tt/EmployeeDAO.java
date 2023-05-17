@@ -1,6 +1,7 @@
 package com.sparta.tt;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class EmployeeDAO {
 
@@ -39,5 +40,18 @@ public class EmployeeDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ResultSet getEmployeesByDepartment(String department) {
+        ResultSet resultSet = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.SELECT_BY_DEPARTMENT);
+            preparedStatement.setString(1, department);
+            resultSet = preparedStatement.executeQuery();
+            return resultSet;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
     }
 }

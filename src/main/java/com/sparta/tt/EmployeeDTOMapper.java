@@ -19,7 +19,26 @@ public class EmployeeDTOMapper {
             String gender = resultSet.getString(5);
             LocalDate hireDate = resultSet.getDate(6).toLocalDate();
 
-            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate, firstName, lastName, gender, hireDate));
+            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate, firstName, lastName, gender, hireDate, null, null, null));
+        }
+        return employeesArray;
+    }
+
+    public ArrayList<EmployeeDTO> getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime(String dept) throws SQLException {
+        EmployeeDAO employeeDAO = new EmployeeDAO(ConnectionManager.createConnection());
+        ResultSet resultSet = employeeDAO.getEmployeesByDepartment(dept);
+        while (resultSet.next()) {
+            int employeeNumber = resultSet.getInt(1);
+            LocalDate birthDate = resultSet.getDate(2).toLocalDate();
+            String firstName = resultSet.getString(3);
+            String lastName = resultSet.getString(4);
+            String gender = resultSet.getString(5);
+            LocalDate hireDate = resultSet.getDate(6).toLocalDate();
+            String department = resultSet.getString(7);
+            LocalDate startDate = resultSet.getDate(8).toLocalDate();
+            LocalDate endDate = resultSet.getDate(9).toLocalDate();
+
+            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate, firstName, lastName, gender, hireDate, department, startDate, endDate));
         }
         return employeesArray;
     }
