@@ -12,12 +12,12 @@ import java.util.logging.Logger;
 
 public class EmployeeDTOMapper {
 
-    public static final Logger employeeDTOMapperLogger = Logger.getLogger(EmployeeDTO.class.getName());
+    public static final Logger employeeDTOMapperLogger = Logger.getLogger(EmployeeDTOMapper.class.getName());
 
     static {
         employeeDTOMapperLogger.setUseParentHandlers(false);
         employeeDTOMapperLogger.setLevel(Level.ALL);
-        employeeDTOMapperLogger.addHandler(FileHandlerConfig.getFileHandler());
+        employeeDTOMapperLogger.addHandler(FileHandlerConfig.getFileHandler(employeeDTOMapperLogger.getName()));
     }
     private ArrayList<EmployeeDTO> employeesArray = new ArrayList<>();
 

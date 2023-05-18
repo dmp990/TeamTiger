@@ -9,11 +9,11 @@ import java.util.logging.Logger;
 
 public class EmployeeDAO {
 
-    public static final Logger employeeDAOLogger = Logger.getLogger(EmployeeDTO.class.getName());
+    public static final Logger employeeDAOLogger = Logger.getLogger(EmployeeDAO.class.getName());
     static {
         employeeDAOLogger.setUseParentHandlers(false);
         employeeDAOLogger.setLevel(Level.ALL);
-        employeeDAOLogger.addHandler(FileHandlerConfig.getFileHandler());
+        employeeDAOLogger.addHandler(FileHandlerConfig.getFileHandler(employeeDAOLogger.getName()));
     }
     private final Connection connection;
     private Statement statement;
@@ -33,6 +33,7 @@ public class EmployeeDAO {
         employeeDAOLogger.log(Level.INFO,"EmployeeDAO getAllUsers method called");
         ResultSet resultSet = null;
         try {
+            employeeDAOLogger.log(Level.INFO,"SQLQueries statement executed (SELECT_ALL)");
             resultSet = statement.executeQuery(SQLQueries.SELECT_ALL);
             return resultSet;
         } catch (SQLException e) {
@@ -44,7 +45,7 @@ public class EmployeeDAO {
 
     public void createEmployee(int empNo, Date birthDate, String firstName, String lastName, String gender, Date hireDate) {
         try {
-            employeeDAOLogger.log(Level.INFO,"EmployeeDAO createEmployee method called");
+            employeeDAOLogger.log(Level.FINE,"EmployeeDAO createEmployee method called");
             PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.CREATE);
             preparedStatement.setInt(1, empNo);
             preparedStatement.setDate(2, birthDate);
@@ -52,6 +53,8 @@ public class EmployeeDAO {
             preparedStatement.setString(4, lastName);
             preparedStatement.setString(5, gender);
             preparedStatement.setDate(6, hireDate);
+
+            employeeDAOLogger.log(Level.INFO,"Employee id - " + empNo +" has been created");
         } catch (SQLException e) {
             employeeDAOLogger.log(Level.WARNING,"EmployeeDAO createEmployee() throws SQLException");
             e.printStackTrace();
@@ -59,9 +62,10 @@ public class EmployeeDAO {
     }
 
     public ResultSet getEmployeesByDepartment(String department) {
-        employeeDAOLogger.log(Level.INFO,"EmployeeDAO getEmployeesByDepartment() method called");
+        employeeDAOLogger.log(Level.FINE,"EmployeeDAO getEmployeesByDepartment() method called");
         ResultSet resultSet = null;
         try {
+            employeeDAOLogger.log(Level.INFO,"SQLQueries statement executed (SELECT_BY_DEPARTMENT)");
             PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.SELECT_BY_DEPARTMENT);
             preparedStatement.setString(1, department);
             resultSet = preparedStatement.executeQuery();
