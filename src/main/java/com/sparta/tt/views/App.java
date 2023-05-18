@@ -42,5 +42,11 @@ public class App {
 
 
         FileWriter writer = new FileWriter(filename, filteredEmployees);
+
+        EmployeeDTO test = new EmployeeDTO(123,"1","1","1","1"
+        ,"1","1","1","1");
+
+
+
     }
 }
