@@ -17,7 +17,6 @@ public class App {
         ArrayList<EmployeeDTO> employees = employeeDTO.getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime("Development");
         ConnectionManager.closeConnection();
 
-
         System.out.print("Filename: ");
         Scanner in = new Scanner(System.in);
         String filename = in.nextLine();
@@ -38,15 +37,7 @@ public class App {
                 .filter(employee -> LocalDate.parse(employee.getToDate()).compareTo(startDate) >= 0 && LocalDate.parse(employee.getToDate()).compareTo(endDate) <= 0)
                 .forEach(employee -> filteredEmployees.add(employee));
 
-
-
-
         FileWriter writer = new FileWriter(filename, filteredEmployees);
-
-        EmployeeDTO test = new EmployeeDTO(123,"1","1","1","1"
-        ,"1","1","1","1");
-
-
 
     }
 }

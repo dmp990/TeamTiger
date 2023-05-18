@@ -134,6 +134,7 @@ public class EmployeeDTO {
 
     @Override
     public String toString() {
+        employeeDTOLogger.log(Level.INFO, "EmployeeDTO toString() method called");
         return "EmployeeDTO{" +
                 "employeeNumber=" + employeeNumber +
                 ", birthDate='" + birthDate + '\'' +
