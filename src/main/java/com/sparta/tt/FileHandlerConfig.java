@@ -9,8 +9,8 @@ public class FileHandlerConfig {
     public static FileHandler getFileHandler() {
         FileHandler fileHandler = null;
         try {
-            fileHandler = new FileHandler("src/main/resources/logFile.log", true);
-            fileHandler.setLevel(Level.ALL);
+            fileHandler = new FileHandler("src/main/resources/logFile.log", false);
+            fileHandler.setLevel(Level.OFF);
             fileHandler.setFormatter(new SimpleFormatter());
         } catch (IllegalArgumentException | SecurityException e) {
             e.printStackTrace();
