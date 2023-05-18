@@ -22,7 +22,7 @@ public class EmployeeDTOMapper {
     private ArrayList<EmployeeDTO> employeesArray = new ArrayList<>();
 
     public ArrayList<EmployeeDTO> getEmployeesArray() throws SQLException {
-        employeeDTOMapperLogger.log(Level.INFO, "EmployeeDTOMapper getEmployeeArray() method called");
+        employeeDTOMapperLogger.log(Level.FINE, "EmployeeDTOMapper getEmployeeArray() method called");
         EmployeeDAO employeeDAO = new EmployeeDAO(ConnectionManager.createConnection());
         ResultSet resultSet = employeeDAO.getAllUsers();
         while (resultSet.next()) {
@@ -39,7 +39,7 @@ public class EmployeeDTOMapper {
     }
 
     public ArrayList<EmployeeDTO> getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime(String dept) throws SQLException {
-        employeeDTOMapperLogger.log(Level.INFO, "EmployeeDTOMapper getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime() method called");
+        employeeDTOMapperLogger.log(Level.FINE, "EmployeeDTOMapper getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime() method called");
         EmployeeDAO employeeDAO = new EmployeeDAO(ConnectionManager.createConnection());
         ResultSet resultSet = employeeDAO.getEmployeesByDepartment(dept);
         while (resultSet.next()) {
