@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws SQLException, IOException {
-            Loader.loader();
+            Loader.takeInput();
+            Loader.writeToFile();
     }
 }
