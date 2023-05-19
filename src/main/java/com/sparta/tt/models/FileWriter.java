@@ -14,11 +14,11 @@ import java.util.logging.Logger;
 
 public class FileWriter {
 
-    public static final Logger fileWriterLogger = Logger.getLogger(EmployeeDTO.class.getName());
+    public static final Logger fileWriterLogger = Logger.getLogger(FileWriter.class.getName());
     static {
         fileWriterLogger.setUseParentHandlers(false);
         fileWriterLogger.setLevel(Level.ALL);
-        fileWriterLogger.addHandler(FileHandlerConfig.getFileHandler());
+        fileWriterLogger.addHandler(FileHandlerConfig.getFileHandler(fileWriterLogger.getName()));
     }
 
     private final String path = "src/main/resources/";
@@ -29,19 +29,19 @@ public class FileWriter {
 
         switch (ext) {
             case "json" -> {
-                fileWriterLogger.log(Level.INFO,"jsonWriter() call (started)");
+                fileWriterLogger.log(Level.FINE,"FileWriter jsonWriter() call (started)");
                 jsonWriter(employees, filename);
-                fileWriterLogger.log(Level.INFO,"jsonWriter() call (finished)");
+                fileWriterLogger.log(Level.FINE,"FileWriter jsonWriter() call (finished)");
             }
             case "xml" -> {
-                fileWriterLogger.log(Level.INFO,"xml() call (started)");
+                fileWriterLogger.log(Level.FINE,"FileWriter xml() call (started)");
                 xmlWriter(employees, filename);
-                fileWriterLogger.log(Level.INFO,"xml() call (finished)");
+                fileWriterLogger.log(Level.FINE,"FileWriter xml() call (finished)");
             }
             default -> {
-                fileWriterLogger.log(Level.INFO,"default call (started)");
+                fileWriterLogger.log(Level.FINE,"FileWriter default call (started)");
                 System.out.println("Invalid format");
-                fileWriterLogger.log(Level.INFO,"default call (finished)");
+                fileWriterLogger.log(Level.FINE,"FileWriter default call (finished)");
             }
         }
     }

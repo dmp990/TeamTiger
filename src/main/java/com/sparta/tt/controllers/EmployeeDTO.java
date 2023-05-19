@@ -13,7 +13,7 @@ public class EmployeeDTO {
     static {
         employeeDTOLogger.setUseParentHandlers(false);
         employeeDTOLogger.setLevel(Level.ALL);
-        employeeDTOLogger.addHandler(FileHandlerConfig.getFileHandler());
+        employeeDTOLogger.addHandler(FileHandlerConfig.getFileHandler(employeeDTOLogger.getName()));
     }
 
     private int employeeNumber;
