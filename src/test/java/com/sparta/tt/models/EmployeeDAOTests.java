@@ -10,17 +10,17 @@ import java.sql.SQLException;
 
 public class EmployeeDAOTests {
 
-    @Test
-    @DisplayName("Check if getAllUsers work")
-    void CheckGetAllUsers() throws SQLException {
-        EmployeeDAO mockDAO = Mockito.mock(EmployeeDAO.class);
-        ResultSet resultSet = Mockito.mock(ResultSet.class);
-
-        Mockito.when(resultSet.getInt(1)).thenReturn(123456);
-        Mockito.when(mockDAO.getAllUsers()).thenReturn(resultSet);
-
-        Assertions.assertEquals(123456,mockDAO.getAllUsers().getInt(1));
-    }
+//    @Test
+//    @DisplayName("Check if getAllUsers work")
+//    void CheckGetAllUsers() throws SQLException {
+//        EmployeeDAO mockDAO = Mockito.mock(EmployeeDAO.class);
+//        ResultSet resultSet = Mockito.mock(ResultSet.class);
+//
+//        Mockito.when(resultSet.getInt(1)).thenReturn(123456);
+//        Mockito.when(mockDAO.getAllUsers()).thenReturn(resultSet);
+//
+//        Assertions.assertEquals(123456,mockDAO.getAllUsers().getInt(1));
+//    }
 
     @Test
     @DisplayName("Check if getEmployeesByDepartment work")

@@ -22,20 +22,14 @@ public class EmployeeDTO {
     private String lastName;
     private String gender;
     private String hireDate;
-    private String departmentName;
-    private String fromDate;
-    private String toDate;
 
-    public EmployeeDTO(int employeeNumber, String birthDate, String firstName, String lastName, String gender, String hireDate, String departmentName, String fromDate, String toDate) {
+    public EmployeeDTO(int employeeNumber, String birthDate, String firstName, String lastName, String gender, String hireDate) {
         this.employeeNumber = employeeNumber;
         this.birthDate = birthDate;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.hireDate = hireDate;
-        this.departmentName = departmentName;
-        this.fromDate = fromDate;
-        this.toDate = toDate;
         employeeDTOLogger.log(Level.FINE,"EmployeeDTO created");
     }
 
@@ -92,46 +86,6 @@ public class EmployeeDTO {
         this.gender = gender;
     }
 
-    public String getHireDate() {
-        employeeDTOLogger.log(Level.INFO,"getting employee hire date called");
-        return hireDate;
-    }
-
-    public void setHireDate(String hireDate) {
-        employeeDTOLogger.log(Level.INFO,"setting employee hire date called");
-        this.hireDate = hireDate;
-    }
-
-    public String getDepartmentName() {
-        employeeDTOLogger.log(Level.INFO,"getting employee department called");
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        employeeDTOLogger.log(Level.INFO,"setting employee department called");
-        this.departmentName = departmentName;
-    }
-
-    public String getFromDate() {
-        employeeDTOLogger.log(Level.INFO,"getting employee from date called");
-        return fromDate;
-    }
-
-    public void setFromDate(String fromDate) {
-        employeeDTOLogger.log(Level.INFO,"setting employee from date called");
-        this.fromDate = fromDate;
-    }
-
-    public String getToDate() {
-        employeeDTOLogger.log(Level.INFO,"getting employee get to date called");
-        return toDate;
-    }
-
-    public void setToDate(String toDate) {
-        employeeDTOLogger.log(Level.INFO,"setting employee set to date called");
-        this.toDate = toDate;
-    }
-
     @Override
     public String toString() {
         employeeDTOLogger.log(Level.INFO, "EmployeeDTO toString() method called");
@@ -142,9 +96,6 @@ public class EmployeeDTO {
                 ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", hireDate='" + hireDate + '\'' +
-                ", departmentName='" + departmentName + '\'' +
-                ", fromDate='" + fromDate + '\'' +
-                ", toDate='" + toDate + '\'' +
                 '}';
     }
 }

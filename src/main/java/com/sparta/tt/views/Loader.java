@@ -21,7 +21,7 @@ public class Loader {
     private static int dept_id = 0;
     private static String startDate;
     private static String endDate;
-    private static EmployeeDTOMapper employeeDTO = new EmployeeDTOMapper();
+    private static EmployeeDTOMapper employeeDTOMapper = new EmployeeDTOMapper();
 
 
     public static void takeInput() throws SQLException {
@@ -72,16 +72,11 @@ public class Loader {
             filename.append(".json");
         }
 
-        ArrayList<EmployeeDTO> employees = employeeDTO.getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime(departmentList.get(dept_id - 1));
+        ArrayList<EmployeeDTO> employees =  employeeDTOMapper.getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime(departmentList.get(dept_id - 1), startDate, endDate);
         ConnectionManager.closeConnection();
-        ArrayList<EmployeeDTO> filteredEmployees = new ArrayList<>();
-        LocalDate finalStartDate = LocalDate.parse(startDate);
-        LocalDate finalEndDate = LocalDate.parse(endDate);
-        employees.stream()
-                .filter(employee -> LocalDate.parse(employee.getToDate()).compareTo(finalStartDate) >= 0 && LocalDate.parse(employee.getToDate()).compareTo(finalEndDate) <= 0)
-                .forEach(employee -> filteredEmployees.add(employee));
+        //ArrayList<EmployeeDTO> filteredEmployees = new ArrayList<>();
 
-        FileWriter writer = new FileWriter(filename.toString(), filteredEmployees);
+        FileWriter writer = new FileWriter(filename.toString(), employees);
     }
 
 }

@@ -29,45 +29,15 @@ public class EmployeeDAO {
         }
     }
 
-    public ResultSet getAllUsers() {
-        employeeDAOLogger.log(Level.INFO,"EmployeeDAO getAllUsers method called");
-        ResultSet resultSet = null;
-        try {
-            employeeDAOLogger.log(Level.INFO,"SQLQueries statement executed (SELECT_ALL)");
-            resultSet = statement.executeQuery(SQLQueries.SELECT_ALL);
-            return resultSet;
-        } catch (SQLException e) {
-            employeeDAOLogger.log(Level.WARNING,"EmployeeDAO getAllUsers() throws SQLException");
-            e.printStackTrace();
-        }
-        return resultSet;
-    }
-
-    public void createEmployee(int empNo, Date birthDate, String firstName, String lastName, String gender, Date hireDate) {
-        try {
-            employeeDAOLogger.log(Level.FINE,"EmployeeDAO createEmployee method called");
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.CREATE);
-            preparedStatement.setInt(1, empNo);
-            preparedStatement.setDate(2, birthDate);
-            preparedStatement.setString(3, firstName);
-            preparedStatement.setString(4, lastName);
-            preparedStatement.setString(5, gender);
-            preparedStatement.setDate(6, hireDate);
-
-            employeeDAOLogger.log(Level.INFO,"Employee id - " + empNo +" has been created");
-        } catch (SQLException e) {
-            employeeDAOLogger.log(Level.WARNING,"EmployeeDAO createEmployee() throws SQLException");
-            e.printStackTrace();
-        }
-    }
-
-    public ResultSet getEmployeesByDepartment(String department) {
+    public ResultSet getEmployeesByDepartment(String department, String startDate, String endDate) {
         employeeDAOLogger.log(Level.FINE,"EmployeeDAO getEmployeesByDepartment() method called");
         ResultSet resultSet = null;
         try {
             employeeDAOLogger.log(Level.INFO,"SQLQueries statement executed (SELECT_BY_DEPARTMENT)");
-            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.SELECT_BY_DEPARTMENT);
+            PreparedStatement preparedStatement = connection.prepareStatement(SQLQueries.SELECT_BY_DEPT_AND_DATE);
             preparedStatement.setString(1, department);
+            preparedStatement.setString(2, startDate);
+            preparedStatement.setString(3, endDate);
             resultSet = preparedStatement.executeQuery();
             return resultSet;
         } catch (SQLException e) {

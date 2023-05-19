@@ -21,27 +21,10 @@ public class EmployeeDTOMapper {
     }
     private ArrayList<EmployeeDTO> employeesArray = new ArrayList<>();
 
-    public ArrayList<EmployeeDTO> getEmployeesArray() throws SQLException {
-        employeeDTOMapperLogger.log(Level.FINE, "EmployeeDTOMapper getEmployeeArray() method called");
-        EmployeeDAO employeeDAO = new EmployeeDAO(ConnectionManager.createConnection());
-        ResultSet resultSet = employeeDAO.getAllUsers();
-        while (resultSet.next()) {
-            int employeeNumber = resultSet.getInt(1);
-            LocalDate birthDate = resultSet.getDate(2).toLocalDate();
-            String firstName = resultSet.getString(3);
-            String lastName = resultSet.getString(4);
-            String gender = resultSet.getString(5);
-            LocalDate hireDate = resultSet.getDate(6).toLocalDate();
-            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate.toString(), firstName, lastName, gender, hireDate.toString(), null, null, null));
-            employeeDTOMapperLogger.log(Level.INFO, "Employee id - "+ employeeNumber +" added to employees array");
-        }
-        return employeesArray;
-    }
-
-    public ArrayList<EmployeeDTO> getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime(String dept) throws SQLException {
+    public ArrayList<EmployeeDTO> getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime(String department, String startDate,String endDate) throws SQLException {
         employeeDTOMapperLogger.log(Level.FINE, "EmployeeDTOMapper getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime() method called");
         EmployeeDAO employeeDAO = new EmployeeDAO(ConnectionManager.createConnection());
-        ResultSet resultSet = employeeDAO.getEmployeesByDepartment(dept);
+        ResultSet resultSet = employeeDAO.getEmployeesByDepartment(department, startDate, endDate);
         while (resultSet.next()) {
             int employeeNumber = resultSet.getInt(1);
             LocalDate birthDate = resultSet.getDate(2).toLocalDate();
@@ -49,10 +32,7 @@ public class EmployeeDTOMapper {
             String lastName = resultSet.getString(4);
             String gender = resultSet.getString(5);
             LocalDate hireDate = resultSet.getDate(6).toLocalDate();
-            String department = resultSet.getString(7);
-            LocalDate startDate = resultSet.getDate(8).toLocalDate();
-            LocalDate endDate = resultSet.getDate(9).toLocalDate();
-            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate.toString(), firstName, lastName, gender, hireDate.toString(), department, startDate.toString(), endDate.toString()));
+            employeesArray.add(new EmployeeDTO(employeeNumber, birthDate.toString(), firstName, lastName, gender, hireDate.toString()));
             employeeDTOMapperLogger.log(Level.INFO, "Employee id - "+ employeeNumber +" added to employees array");
         }
         return employeesArray;
