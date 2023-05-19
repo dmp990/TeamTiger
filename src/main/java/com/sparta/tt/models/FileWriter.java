@@ -8,6 +8,7 @@ import com.sparta.tt.FileHandlerConfig;
 import com.sparta.tt.controllers.EmployeeDTO;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ public class FileWriter {
         fileWriterLogger.addHandler(FileHandlerConfig.getFileHandler(fileWriterLogger.getName()));
     }
 
+    private final String fullPath = "C:/Users/asada/IdeaProjects/TeamTiger/";
     private final String path = "src/main/resources/";
     public FileWriter(String filename, ArrayList<EmployeeDTO> employees) throws IOException {
         fileWriterLogger.log(Level.INFO,"FileWriter constructor() method called");
@@ -50,11 +52,13 @@ public class FileWriter {
         ObjectMapper mapper = new ObjectMapper();
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
         writer.writeValue(new File(path + filename), employees);
+        System.out.println("File successfully written to: " + fullPath + path + filename + LocalDate.now());
     }
 
     public void xmlWriter(ArrayList<EmployeeDTO> employees, String filename) throws IOException {
         ObjectMapper mapper = new XmlMapper();
         ObjectWriter writer = mapper.writer();
         writer.writeValue(new File(path + filename), employees);
+        System.out.println("File successfully written to: " + fullPath + path + filename);
     }
 }

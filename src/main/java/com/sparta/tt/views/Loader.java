@@ -68,17 +68,14 @@ public class Loader {
             }
         }
 
-        StringBuilder filename = new StringBuilder(LocalDate.now().toString());
+        StringBuilder filename = new StringBuilder(departmentList.get(dept_id - 1) + "_" + startDate.toString() + "_" + endDate.toString());
         System.out.print("Please select a file format: (1 for .xml 2 for .json): ");
         String fileFormat = in.nextLine();
         if (fileFormat.equals("1")) {
             filename.append(".xml");
-            System.out.println("xml");
         } else if (fileFormat.equals("2")) {
             filename.append(".json");
-            System.out.println("json");
         }
-        System.out.println(filename);
 
 
         ArrayList<EmployeeDTO> employees = employeeDTO.getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime(departmentList.get(dept_id - 1));
@@ -90,6 +87,8 @@ public class Loader {
         employees.stream()
                 .filter(employee -> LocalDate.parse(employee.getToDate()).compareTo(finalStartDate) >= 0 && LocalDate.parse(employee.getToDate()).compareTo(finalEndDate) <= 0)
                 .forEach(employee -> filteredEmployees.add(employee));
+
+
 
         FileWriter writer = new FileWriter(filename.toString(), filteredEmployees);
 

@@ -16,7 +16,7 @@ public class DepartmentsDAO {
     static {
         departmentsDAOLogger.setUseParentHandlers(false);
         departmentsDAOLogger.setLevel(Level.ALL);
-        departmentsDAOLogger.addHandler(FileHandlerConfig.getFileHandler());
+        departmentsDAOLogger.addHandler(FileHandlerConfig.getFileHandler(departmentsDAOLogger.getName()));
     }
     private final Connection connection;
     private Statement statement;
