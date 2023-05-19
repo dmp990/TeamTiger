@@ -27,6 +27,7 @@ public class EmployeeFileReader {
             case "xml" -> {
                 try {
                     List<EmployeeDTO> employees = xmlMapper.readValue(new File("src/main/resources/employees03.xml"), new TypeReference<List<EmployeeDTO>>() {});
+                    System.out.println(employees.get(0).getEmp_no());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -42,7 +43,7 @@ public class EmployeeFileReader {
                 List<EmployeeDTO> employees = new ArrayList<>();
 
                 String employeeLine;
-                try {
+          /*      try {
                     BufferedReader f = new BufferedReader(new FileReader("src/main/resources/employees01.csv"));
                     f.readLine();
                     String line = f.readLine();
@@ -57,7 +58,7 @@ public class EmployeeFileReader {
                     }
                 } catch (FileNotFoundException e) {
                     throw new RuntimeException(e);
-                }
+                }*/
             }
         }
     }

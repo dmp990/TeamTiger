@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class App {
     public static void main(String[] args) throws SQLException, IOException {
-        EmployeeFileReader fr = new EmployeeFileReader("csv");
+        EmployeeFileReader fr = new EmployeeFileReader("xml");
             Loader.loader();
     }
 }
