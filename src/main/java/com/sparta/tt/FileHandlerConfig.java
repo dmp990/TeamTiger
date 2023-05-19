@@ -10,14 +10,14 @@ public class FileHandlerConfig {
     public static final Logger fileHandlerConfigLogger = Logger.getLogger(FileHandlerConfig.class.getName());
     static {
         fileHandlerConfigLogger.setUseParentHandlers(false);
-        fileHandlerConfigLogger.setLevel(Level.INFO);
+        fileHandlerConfigLogger.setLevel(Level.OFF);
         fileHandlerConfigLogger.addHandler(FileHandlerConfig.getFileHandler(fileHandlerConfigLogger.getName()));
     }
     public static FileHandler getFileHandler(String loggerName) {
         FileHandler fileHandler = null;
         try {
             fileHandler = new FileHandler("src/main/resources/"+loggerName+".log", true);
-            fileHandler.setLevel(Level.INFO);
+            fileHandler.setLevel(Level.OFF);
             fileHandler.setFormatter(new SimpleFormatter());
         } catch (IllegalArgumentException | SecurityException e) {
             fileHandlerConfigLogger.log(Level.WARNING,"FileHandlerConfig has thrown an IllegalArgumentException or SecurityException");

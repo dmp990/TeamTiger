@@ -24,7 +24,6 @@ public class JsonWriter {
                     xmlWriter(new Spartan("Manish", "java",  new Date(1990, 01, 01).toString()));
             default -> System.out.println("Invalid format");
         }
-
     }
 
     public void jsonWriter(Spartan jsonDataObject) throws IOException {
@@ -37,6 +36,5 @@ public class JsonWriter {
         ObjectMapper mapper = new XmlMapper();
         ObjectWriter writer = mapper.writer();
         writer.writeValue(new File(path + "output.xml"), xmlDataObject);
-
     }
 }
