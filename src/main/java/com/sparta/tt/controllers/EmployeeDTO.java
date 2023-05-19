@@ -16,70 +16,84 @@ public class EmployeeDTO {
         employeeDTOLogger.addHandler(FileHandlerConfig.getFileHandler(employeeDTOLogger.getName()));
     }
 
-    private int employeeNumber;
-    private String birthDate;
-    private String firstName;
-    private String lastName;
+    private int emp_no;
+    private String birth_date;
+    private String first_name;
+    private String last_name;
     private String gender;
-    private String hireDate;
+    private String hire_date;
     private String departmentName;
     private String fromDate;
     private String toDate;
 
-    public EmployeeDTO(int employeeNumber, String birthDate, String firstName, String lastName, String gender, String hireDate, String departmentName, String fromDate, String toDate) {
-        this.employeeNumber = employeeNumber;
-        this.birthDate = birthDate;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public EmployeeDTO(int emp_no, String birth_date, String first_name, String last_name, String gender, String hire_date, String departmentName, String fromDate, String toDate) {
+        this.emp_no = emp_no;
+        this.birth_date = birth_date;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.gender = gender;
-        this.hireDate = hireDate;
+        this.hire_date = hire_date;
         this.departmentName = departmentName;
         this.fromDate = fromDate;
         this.toDate = toDate;
         employeeDTOLogger.log(Level.FINE,"EmployeeDTO created");
     }
 
+    public EmployeeDTO(){
+
+    }
+
+    public EmployeeDTO(int emp_no, String birth_date, String first_name, String last_name, String gender, String hire_date) {
+        this.emp_no = emp_no;
+        this.birth_date = birth_date;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.gender = gender;
+        this.hire_date = hire_date;
+      //  employeeDTOLogger.log(Level.FINE,"EmployeeDTO created");
+    }
+
     ConsoleHandler consoleHandler = new ConsoleHandler();
 
 
-    public int getEmployeeNumber() {
+    public int getEmp_no() {
         employeeDTOLogger.log(Level.INFO,"getting employee number called");
-        return employeeNumber;
+        return emp_no;
     }
 
-    public void setEmployeeNumber(int employeeNumber) {
+    public void setEmp_no(int emp_no) {
         employeeDTOLogger.log(Level.INFO,"setting employee number called");
-        this.employeeNumber = employeeNumber;
+        this.emp_no = emp_no;
     }
 
-    public String getBirthDate() {
+    public String getBirth_date() {
         employeeDTOLogger.log(Level.INFO,"getting employee birth date called");
-        return birthDate;
+        return birth_date;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirth_date(String birth_date) {
         employeeDTOLogger.log(Level.INFO,"setting employee birth date called");
-        this.birthDate = birthDate;
+        this.birth_date = birth_date;
     }
 
-    public String getFirstName() {
+    public String getFirst_name() {
         employeeDTOLogger.log(Level.INFO,"getting employee first name called");
-        return firstName;
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirst_name(String first_name) {
         employeeDTOLogger.log(Level.INFO,"setting employee first name called");
-        this.firstName = firstName;
+        this.first_name = first_name;
     }
 
-    public String getLastName() {
+    public String getLast_name() {
         employeeDTOLogger.log(Level.INFO,"getting employee last name called");
-        return lastName;
+        return last_name;
     }
 
-    public void setLastName(String lastName) {
+    public void setLast_name(String last_name) {
         employeeDTOLogger.log(Level.INFO,"setting employee last name called");
-        this.lastName = lastName;
+        this.last_name = last_name;
     }
 
     public String getGender() {
@@ -92,14 +106,14 @@ public class EmployeeDTO {
         this.gender = gender;
     }
 
-    public String getHireDate() {
+    public String getHire_date() {
         employeeDTOLogger.log(Level.INFO,"getting employee hire date called");
-        return hireDate;
+        return hire_date;
     }
 
-    public void setHireDate(String hireDate) {
+    public void setHire_date(String hire_date) {
         employeeDTOLogger.log(Level.INFO,"setting employee hire date called");
-        this.hireDate = hireDate;
+        this.hire_date = hire_date;
     }
 
     public String getDepartmentName() {
@@ -136,12 +150,12 @@ public class EmployeeDTO {
     public String toString() {
         employeeDTOLogger.log(Level.INFO, "EmployeeDTO toString() method called");
         return "EmployeeDTO{" +
-                "employeeNumber=" + employeeNumber +
-                ", birthDate='" + birthDate + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "employeeNumber=" + emp_no +
+                ", birthDate='" + birth_date + '\'' +
+                ", firstName='" + first_name + '\'' +
+                ", lastName='" + last_name + '\'' +
                 ", gender='" + gender + '\'' +
-                ", hireDate='" + hireDate + '\'' +
+                ", hireDate='" + hire_date + '\'' +
                 ", departmentName='" + departmentName + '\'' +
                 ", fromDate='" + fromDate + '\'' +
                 ", toDate='" + toDate + '\'' +

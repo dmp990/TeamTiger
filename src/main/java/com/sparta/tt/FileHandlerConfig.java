@@ -10,7 +10,7 @@ public class FileHandlerConfig {
     public static final Logger fileHandlerConfigLogger = Logger.getLogger(FileHandlerConfig.class.getName());
     static {
         fileHandlerConfigLogger.setUseParentHandlers(false);
-        fileHandlerConfigLogger.setLevel(Level.INFO);
+        fileHandlerConfigLogger.setLevel(Level.OFF);
         fileHandlerConfigLogger.addHandler(FileHandlerConfig.getFileHandler(fileHandlerConfigLogger.getName()));
     }
     public static FileHandler getFileHandler(String loggerName) {

@@ -8,25 +8,25 @@ public class EmployeeDTOTests {
     @Test
     @DisplayName("Check if getEmployeeNumber works correctly")
     void checkGetEmployeeNumber() {
-        Assertions.assertEquals(123456, testEmployee.getEmployeeNumber());
+        Assertions.assertEquals(123456, testEmployee.getEmp_no());
     }
 
     @Test
     @DisplayName("Check if getBirthDate works correctly")
     void checkGetBirthDate() {
-        Assertions.assertEquals("1990-10-10", testEmployee.getBirthDate());
+        Assertions.assertEquals("1990-10-10", testEmployee.getBirth_date());
     }
 
     @Test
     @DisplayName("Check if getFirstName works correctly")
     void checkGetFirstName() {
-        Assertions.assertEquals("John", testEmployee.getFirstName());
+        Assertions.assertEquals("John", testEmployee.getFirst_name());
     }
 
     @Test
     @DisplayName("Check if getLastName works correctly")
     void checkGetLastName() {
-        Assertions.assertEquals("Doe", testEmployee.getLastName());
+        Assertions.assertEquals("Doe", testEmployee.getLast_name());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class EmployeeDTOTests {
     @Test
     @DisplayName("Check if getHireDate works correctly")
     void checkGetHireDate() {
-        Assertions.assertEquals("1990-10-10", testEmployee.getHireDate());
+        Assertions.assertEquals("1990-10-10", testEmployee.getHire_date());
     }
 
     @Test
