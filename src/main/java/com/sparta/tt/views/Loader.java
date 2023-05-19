@@ -19,7 +19,6 @@ public class Loader {
 
     private static ArrayList<String> departmentList = null;
     private static int dept_id = 0;
-
     private static String startDate;
     private static String endDate;
     private static EmployeeDTOMapper employeeDTO = new EmployeeDTOMapper();
@@ -61,26 +60,26 @@ public class Loader {
 
     public static void writeToFile() throws SQLException, IOException {
         StringBuilder filename = new StringBuilder(departmentList.get(dept_id - 1) + "_" + startDate + "_" + endDate);
-        System.out.print("Please select a file format: (1 for .xml 2 for .json): ");
-        Scanner in = new Scanner(System.in);
-        String fileFormat = in.nextLine();
+        String fileFormat = "";
+        while (!fileFormat.equals("1") && !fileFormat.equals("2")){
+            System.out.print("Please select a file format: (1 for .xml 2 for .json): ");
+            Scanner in = new Scanner(System.in);
+            fileFormat = in.nextLine();
+        }
         if (fileFormat.equals("1")) {
             filename.append(".xml");
-        } else if (fileFormat.equals("2")) {
+        } else  {
             filename.append(".json");
         }
 
-
         ArrayList<EmployeeDTO> employees = employeeDTO.getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime(departmentList.get(dept_id - 1));
         ConnectionManager.closeConnection();
-
         ArrayList<EmployeeDTO> filteredEmployees = new ArrayList<>();
         LocalDate finalStartDate = LocalDate.parse(startDate);
         LocalDate finalEndDate = LocalDate.parse(endDate);
         employees.stream()
                 .filter(employee -> LocalDate.parse(employee.getToDate()).compareTo(finalStartDate) >= 0 && LocalDate.parse(employee.getToDate()).compareTo(finalEndDate) <= 0)
                 .forEach(employee -> filteredEmployees.add(employee));
-
 
         FileWriter writer = new FileWriter(filename.toString(), filteredEmployees);
     }
