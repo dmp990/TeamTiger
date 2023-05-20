@@ -1,7 +1,6 @@
 package com.sparta.tt.util;
 
-import com.sparta.tt.FileHandlerConfig;
-import com.sparta.tt.controllers.EmployeeDTO;
+import com.sparta.tt.LogHandlerConfig;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,7 +14,7 @@ public class PropertiesLoader {
     static {
         propertiesLoaderLogger.setUseParentHandlers(false);
         propertiesLoaderLogger.setLevel(Level.ALL);
-        propertiesLoaderLogger.addHandler(FileHandlerConfig.getFileHandler(propertiesLoaderLogger.getName()));
+        propertiesLoaderLogger.addHandler(LogHandlerConfig.getFileHandler(propertiesLoaderLogger.getName()));
     }
 
     public static Properties getProperties() {

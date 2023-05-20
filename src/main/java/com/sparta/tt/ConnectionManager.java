@@ -15,7 +15,7 @@ public class ConnectionManager {
     static {
         ConnectionManagerLogger.setUseParentHandlers(false);
         ConnectionManagerLogger.setLevel(Level.ALL);
-        ConnectionManagerLogger.addHandler(FileHandlerConfig.getFileHandler(ConnectionManagerLogger.getName()));
+        ConnectionManagerLogger.addHandler(LogHandlerConfig.getFileHandler(ConnectionManagerLogger.getName()));
     }
 
     private static Connection connection;
