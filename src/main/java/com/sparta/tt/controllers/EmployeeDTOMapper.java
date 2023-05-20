@@ -1,7 +1,7 @@
 package com.sparta.tt.controllers;
 
 import com.sparta.tt.ConnectionManager;
-import com.sparta.tt.FileHandlerConfig;
+import com.sparta.tt.LogHandlerConfig;
 import com.sparta.tt.models.EmployeeDAO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ public class EmployeeDTOMapper {
     static {
         employeeDTOMapperLogger.setUseParentHandlers(false);
         employeeDTOMapperLogger.setLevel(Level.ALL);
-        employeeDTOMapperLogger.addHandler(FileHandlerConfig.getFileHandler(employeeDTOMapperLogger.getName()));
+        employeeDTOMapperLogger.addHandler(LogHandlerConfig.getFileHandler(employeeDTOMapperLogger.getName()));
     }
     private ArrayList<EmployeeDTO> employeesArray = new ArrayList<>();
 

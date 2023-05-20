@@ -1,7 +1,6 @@
 package com.sparta.tt.models;
 
-import com.sparta.tt.FileHandlerConfig;
-import com.sparta.tt.controllers.EmployeeDTO;
+import com.sparta.tt.LogHandlerConfig;
 
 import java.sql.*;
 import java.util.logging.Level;
@@ -13,7 +12,7 @@ public class EmployeeDAO {
     static {
         employeeDAOLogger.setUseParentHandlers(false);
         employeeDAOLogger.setLevel(Level.ALL);
-        employeeDAOLogger.addHandler(FileHandlerConfig.getFileHandler(employeeDAOLogger.getName()));
+        employeeDAOLogger.addHandler(LogHandlerConfig.getFileHandler(employeeDAOLogger.getName()));
     }
     private final Connection connection;
     private Statement statement;
