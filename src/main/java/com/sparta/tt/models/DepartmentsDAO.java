@@ -37,7 +37,6 @@ public class DepartmentsDAO {
         ResultSet resultSet = null;
         try {
             resultSet = statement.executeQuery(SQLQueries.SELECT_ALL_DEPARTMENTS);
-            return resultSet;
         } catch (SQLException e) {
             departmentsDAOLogger.log(Level.WARNING,"DepartmentsDAO getAllDepartments() throws SQLException");
             e.printStackTrace();

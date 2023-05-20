@@ -74,9 +74,10 @@ public class Loader {
 
         ArrayList<EmployeeDTO> employees =  employeeDTOMapper.getEmployeesFromSpecifiedDepartmentDuringSpecifiedTime(departmentList.get(dept_id - 1), startDate, endDate);
         ConnectionManager.closeConnection();
-        //ArrayList<EmployeeDTO> filteredEmployees = new ArrayList<>();
+       
 
         FileWriter writer = new FileWriter(filename.toString(), employees);
+
     }
 
 }

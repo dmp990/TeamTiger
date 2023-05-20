@@ -2,7 +2,6 @@ package com.sparta.tt.controllers;
 
 import com.sparta.tt.ConnectionManager;
 import com.sparta.tt.models.DepartmentsDAO;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
