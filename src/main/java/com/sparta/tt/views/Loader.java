@@ -1,18 +1,15 @@
 package com.sparta.tt.views;
 
 import com.sparta.tt.ConnectionManager;
-import com.sparta.tt.controllers.DepartmentsRepository;
 import com.sparta.tt.controllers.EmployeeDTO;
 import com.sparta.tt.controllers.EmployeeDTOMapper;
 import com.sparta.tt.models.FileWriter;
-import net.bytebuddy.asm.Advice;
+import com.sparta.tt.util.DateFormatValidator;
+import com.sparta.tt.util.DateValidator;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Loader {
@@ -44,18 +41,28 @@ public class Loader {
             in.nextLine();
         } while (!InputValidator.departmentValidator(dept_id));
 
-        isFirstTime = true;
-        do {
-            if (isFirstTime) {
-                isFirstTime = false;
-            } else {
-                System.out.println("End date must be after the start date. Please choose again.");
-            }
+
             System.out.println("Start Date (YYYY-MM-DD): ");
             startDate = in.nextLine();
+
+            while(!DateFormatValidator.isValidDate(startDate)){
+                    System.out.println("Invalid date format.  Please enter a valid start date in the format of yyyy-mm-dd");
+                    startDate = in.nextLine();
+            }
+
             System.out.println("End Date (YYYY-MM-DD): ");
             endDate = in.nextLine();
-        } while (!InputValidator.dateValidator(startDate, endDate));
+
+            while(!DateFormatValidator.isValidDate(endDate)){
+                System.out.println("Invalid date format.  Please enter a valid end date in the format of yyyy-mm-dd");
+                endDate = in.nextLine();
+            };
+
+            while(!DateValidator.dateValidator(startDate, endDate)) {
+                System.out.println("End date must be greater than start date. Please enter a valid end date in the format of yyyy-mm-dd");
+                endDate = in.nextLine();
+            }
+
     }
 
     public static void writeToFile() throws SQLException, IOException {
