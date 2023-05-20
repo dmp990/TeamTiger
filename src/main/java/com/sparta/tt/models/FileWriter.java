@@ -61,7 +61,7 @@ public class FileWriter {
     public void xmlWriter(ArrayList<EmployeeDTO> employees, String filename) throws IOException {
         ObjectMapper mapper = new XmlMapper();
         ObjectWriter writer = mapper.writer();
-        writer.writeValue(new File(path + filename), employees);
+        writer.writeValue(new File(path + "EmployeesXML/" + filename), employees);
         System.out.println("File successfully written to: " + fullPath + path + filename);
     }
 }
