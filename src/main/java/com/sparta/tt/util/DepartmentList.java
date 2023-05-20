@@ -1,7 +1,6 @@
 package com.sparta.tt.util;
 
 import com.sparta.tt.controllers.DepartmentsRepository;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 

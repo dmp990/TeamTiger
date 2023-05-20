@@ -35,7 +35,6 @@ public class EmployeeDTO {
 
     ConsoleHandler consoleHandler = new ConsoleHandler();
 
-
     public int getEmployeeNumber() {
         employeeDTOLogger.log(Level.INFO,"getting employee number called");
         return employeeNumber;
