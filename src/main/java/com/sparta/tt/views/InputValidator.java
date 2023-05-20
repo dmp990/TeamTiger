@@ -19,9 +19,9 @@ public class InputValidator {
         return true;
     }
 
-    public static ArrayList<String> getDepartmentList() throws SQLException {
-        DepartmentsRepository deptRepo = new DepartmentsRepository();
-        departmentList = deptRepo.getListOfDepartments();
-        return departmentList;
-    }
+//    public static ArrayList<String> getDepartmentList() throws SQLException {
+//        DepartmentsRepository deptRepo = new DepartmentsRepository();
+//        departmentList = deptRepo.getListOfDepartments();
+//        return departmentList;
+//    }
 }
