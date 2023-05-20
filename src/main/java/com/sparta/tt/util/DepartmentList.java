@@ -1,23 +1,12 @@
-package com.sparta.tt.views;
+package com.sparta.tt.util;
 
 import com.sparta.tt.controllers.DepartmentsRepository;
-import net.bytebuddy.asm.Advice;
-
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class InputValidator {
+public class DepartmentList {
 
     private static ArrayList<String> departmentList = new ArrayList<>();
-
-    public static boolean departmentValidator(int dept_id) {
-        return dept_id > 0 && dept_id <= departmentList.size();
-    }
-
-    public static boolean dateRangeEmployeeFilter() {
-        return true;
-    }
 
     public static ArrayList<String> getDepartmentList() throws SQLException {
         DepartmentsRepository deptRepo = new DepartmentsRepository();
