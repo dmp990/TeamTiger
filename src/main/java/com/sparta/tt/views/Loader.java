@@ -36,42 +36,47 @@ public class Loader {
             System.out.println((i + 1) + " : " + departmentList.get(i));
         }
 
-        while (!validDepartmentInput) {
+        do {
             try {
                 System.out.println("Select a department number: ");
                 dept_id = userInput.nextInt();
-                validDepartmentInput = true;
+
+
+                if (!DepartmentValidator.departmentValidator(dept_id, departmentList.size())) {
+                    System.out.println("Invalid input.  Please select a valid department number from 1 to " + departmentList.size());
+
+                } else {
+                    validDepartmentInput = true;
+                    userInput.nextLine();
+                }
+
             } catch (InputMismatchException e) {
-                System.out.println("Inavalid input.  Please select a valid department number from 1 to " + departmentList.size());
-                userInput.next();
+                System.out.println("Invalid input.  Please select a valid department number from 1 to " + departmentList.size());
+                userInput.nextLine();
             }
-        }
-        while (!DepartmentValidator.departmentValidator(dept_id, departmentList.size())) {
-            System.out.println("Please enter a valid department id from 1 to " + departmentList.size());
-            dept_id = userInput.nextInt();
-        }
+        } while (!validDepartmentInput);
 
-        System.out.println("Start Date (YYYY-MM-DD): ");
-        startDate = userInput.nextLine();
 
-        while (!DateFormatValidator.isValidDate(startDate)) {
-            System.out.println("Invalid date format.  Please enter a valid start date in the format of yyyy-mm-dd");
+        do {
+            System.out.println("Start Date (YYYY-MM-DD): ");
             startDate = userInput.nextLine();
-        }
+            if (!DateFormatValidator.isValidDate((startDate))) {
+                System.out.println("Invalid date format.  Please enter a valid start date in the format of yyyy-mm-dd");
+            }
 
-        System.out.println("End Date (YYYY-MM-DD): ");
-        endDate = userInput.nextLine();
+        } while (!DateFormatValidator.isValidDate(startDate));
 
-        while (!DateFormatValidator.isValidDate(endDate)) {
-            System.out.println("Invalid date format.  Please enter a valid end date in the format of yyyy-mm-dd");
+
+        do {
+            System.out.println("End Date (YYYY-MM-DD): ");
             endDate = userInput.nextLine();
-        }
-        ;
+            if (!DateFormatValidator.isValidDate(endDate)) {
+                System.out.println("Invalid date format.  Please enter a valid end date in the format of yyyy-mm-dd");
+            }
 
-        while (!DateValidator.dateValidator(startDate, endDate)) {
-            System.out.println("End date must be greater than start date. Please enter a valid end date in the format of yyyy-mm-dd");
-            endDate = userInput.nextLine();
-        }
+        } while (!DateFormatValidator.isValidDate(endDate));
+
+
     }
 
     public static void writeToFile() throws SQLException, IOException {
