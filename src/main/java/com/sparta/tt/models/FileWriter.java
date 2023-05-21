@@ -4,13 +4,11 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.sparta.tt.FileHandlerConfig;
+import com.sparta.tt.LogHandlerConfig;
 import com.sparta.tt.controllers.EmployeeDTO;
-
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,18 +19,16 @@ public class FileWriter {
     static {
         fileWriterLogger.setUseParentHandlers(false);
         fileWriterLogger.setLevel(Level.ALL);
-        fileWriterLogger.addHandler(FileHandlerConfig.getFileHandler(fileWriterLogger.getName()));
+        fileWriterLogger.addHandler(LogHandlerConfig.getFileHandler(fileWriterLogger.getName()));
     }
 
-    private final String fullPath = "C:/Users/asada/IdeaProjects/TeamTiger/";
+   // private final String fullPath = "C:/Users/asada/IdeaProjects/TeamTiger/";
     private final String path = "src/main/resources/";
 
-    public FileWriter(String filename, ArrayList<EmployeeDTO> employees) throws IOException {
-        fileWriterLogger.log(Level.INFO, "FileWriter constructor() method called");
-        String[] extension = filename.split("\\.");
-        String ext = extension[extension.length - 1];
+    public FileWriter(String filename, String extension, List<EmployeeDTO> employees) throws IOException {
+        fileWriterLogger.log(Level.ALL, "FileWriter constructor() method called");
 
-        switch (ext) {
+        switch (extension) {
             case "json" -> {
                 fileWriterLogger.log(Level.FINE, "FileWriter jsonWriter() call (started)");
                 jsonWriter(employees, filename);
@@ -51,17 +47,17 @@ public class FileWriter {
         }
     }
 
-    public void jsonWriter(ArrayList<EmployeeDTO> employees, String filename) throws IOException {
+    public void jsonWriter(List<EmployeeDTO> employees, String filename) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        writer.writeValue(new File(path + filename), employees);
-        System.out.println("File successfully written to: " + fullPath + path + filename);
+        writer.writeValue(new File(path + "EmployeesJSON/" + filename), employees);
+        System.out.println("File successfully written to: " + path + filename);
     }
 
-    public void xmlWriter(ArrayList<EmployeeDTO> employees, String filename) throws IOException {
+    public void xmlWriter(List<EmployeeDTO> employees, String filename) throws IOException {
         ObjectMapper mapper = new XmlMapper();
         ObjectWriter writer = mapper.writer();
-        writer.writeValue(new File(path + filename), employees);
-        System.out.println("File successfully written to: " + fullPath + path + filename);
+        writer.writeValue(new File(path + "EmployeesXML/" + filename), employees);
+        System.out.println("File successfully written to: " + path + filename);
     }
 }

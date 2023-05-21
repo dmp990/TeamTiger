@@ -1,7 +1,7 @@
 package com.sparta.tt.controllers;
 
 
-import com.sparta.tt.FileHandlerConfig;
+import com.sparta.tt.LogHandlerConfig;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
@@ -13,7 +13,7 @@ public class EmployeeDTO {
     static {
         employeeDTOLogger.setUseParentHandlers(false);
         employeeDTOLogger.setLevel(Level.ALL);
-        employeeDTOLogger.addHandler(FileHandlerConfig.getFileHandler(employeeDTOLogger.getName()));
+        employeeDTOLogger.addHandler(LogHandlerConfig.getFileHandler(employeeDTOLogger.getName()));
     }
 
     private int employeeNumber;
@@ -34,7 +34,6 @@ public class EmployeeDTO {
     }
 
     ConsoleHandler consoleHandler = new ConsoleHandler();
-
 
     public int getEmployeeNumber() {
         employeeDTOLogger.log(Level.INFO,"getting employee number called");
