@@ -22,11 +22,11 @@ public class FileWriter {
         fileWriterLogger.addHandler(LogHandlerConfig.getFileHandler(fileWriterLogger.getName()));
     }
 
-    private final String fullPath = "C:/Users/asada/IdeaProjects/TeamTiger/";
+   // private final String fullPath = "C:/Users/asada/IdeaProjects/TeamTiger/";
     private final String path = "src/main/resources/";
 
     public FileWriter(String filename, String extension, List<EmployeeDTO> employees) throws IOException {
-        fileWriterLogger.log(Level.INFO, "FileWriter constructor() method called");
+        fileWriterLogger.log(Level.ALL, "FileWriter constructor() method called");
 
         switch (extension) {
             case "json" -> {
@@ -51,13 +51,13 @@ public class FileWriter {
         ObjectMapper mapper = new ObjectMapper();
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
         writer.writeValue(new File(path + "EmployeesJSON/" + filename), employees);
-        System.out.println("File successfully written to: " + fullPath + path + filename);
+        System.out.println("File successfully written to: " + path + filename);
     }
 
     public void xmlWriter(List<EmployeeDTO> employees, String filename) throws IOException {
         ObjectMapper mapper = new XmlMapper();
         ObjectWriter writer = mapper.writer();
         writer.writeValue(new File(path + "EmployeesXML/" + filename), employees);
-        System.out.println("File successfully written to: " + fullPath + path + filename);
+        System.out.println("File successfully written to: " + path + filename);
     }
 }
